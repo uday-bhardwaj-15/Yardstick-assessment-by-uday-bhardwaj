@@ -1,0 +1,117 @@
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mongodb"
+//   url      = env("DATABASE_URL")
+// }
+
+// model UserSettings {
+//   userId   String @id @map("_id") // Fix: MongoDB requires @map("_id")
+//   currency String
+// }
+
+// model Category {
+//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+//   createdAt DateTime @default(now())
+//   name      String
+//   userId    String
+//   icon      String
+//   type      String   @default("income")
+
+//   @@unique([name, userId, type])
+// }
+
+// model Transaction {
+//   id           String   @id @default(auto()) @map("_id") @db.ObjectId
+//   userId       String
+//   amount       Int
+//   date         DateTime
+//   description  String?
+//   type         String
+//   category     String
+//   categoryIcon String?
+// }
+
+
+
+// model MonthHistory {
+//   id      String @id @default(auto()) @map("_id") @db.ObjectId
+//   userId  String
+//   day     Int
+//   month   Int
+//   year    Int
+//   income  Float
+//   expense Float
+
+//   @@unique([day, month, year, userId], name: "day_month_year_userId")
+// }
+
+// model YearHistory {
+//   id      String @id @default(auto()) @map("_id") @db.ObjectId
+//   userId  String
+//   month   Int
+//   year    Int
+//   income  Float
+//   expense Float
+// }
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model UserSettings {
+  userId   String @id @map("_id")
+  currency String
+}
+
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  name      String
+  userId    String
+  icon      String
+  type      String   @default("income")
+
+  @@unique([name, userId, type])
+}
+
+model Transaction {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String
+  amount       Int
+  date         DateTime
+  description  String?
+  type         String
+  category     String
+  categoryIcon String?
+}
+
+model MonthHistory {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  day     Int
+  month   Int
+  year    Int
+  income  Float
+  expense Float
+
+  @@unique([day, month, year, userId], name: "day_month_year_userId")
+}
+
+model YearHistory {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  month   Int
+  year    Int
+  income  Float
+  expense Float
+
+  @@unique([month, year, userId], name: "month_year_userId")
+}
