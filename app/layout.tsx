@@ -18,19 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html
-        lang="en"
-        className="dark"
-        style={{
-          colorScheme: "dark",
-        }}
-      >
-        <body className={inter.className}>
-          <Toaster richColors position="bottom-right" />
-          <RootProviders>{children}</RootProviders>
-        </body>
-      </html>
-    </ClerkProvider>
+    // <ClerkProvider>
+    <html
+      lang="en"
+      className="dark"
+      style={{
+        colorScheme: "dark",
+      }}
+    >
+      <body className={inter.className}>
+        <Toaster richColors position="bottom-right" />
+        <RootProviders>{children}</RootProviders>
+      </body>
+    </html>
+    // </ClerkProvider>
   );
 }

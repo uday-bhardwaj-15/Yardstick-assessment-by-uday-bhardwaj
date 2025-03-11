@@ -4,7 +4,7 @@ import { ThemeSwitcherBtn } from "@/components/ThemeSwitcherBtn";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { UserButton } from "@clerk/nextjs";
+// import { UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -56,7 +56,7 @@ function MobileNavbar() {
         </div>
         <div className="flex items-center gap-2">
           <ThemeSwitcherBtn />
-          <UserButton afterSignOutUrl="/sign-in" />
+          {/* <UserButton afterSignOutUrl="/sign-in" /> */}
         </div>
       </nav>
     </div>
@@ -81,7 +81,7 @@ function DesktopNavbar() {
         </div>
         <div className="flex items-center gap-2">
           <ThemeSwitcherBtn />
-          <UserButton afterSignOutUrl="/sign-in" />
+          {/* <UserButton afterSignOutUrl="/sign-in" /> */}
         </div>
       </nav>
     </div>
